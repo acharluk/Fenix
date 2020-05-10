@@ -1,0 +1,17 @@
+.vscode_colors {
+  --body-bg: var(--vscode-editor-background);
+  --body-fg: var(--vscode-editor-foreground);
+
+  --sidebar-bg: var(--vscode-activityBar-background);
+  --sidebar-header-bg: var(--vscode-activityBar-background);
+  --sidebar-element-bg: var(--vscode-activityBar-background);
+  
+  --template-bg: var(--vscode-activityBar-background);
+  --template-bg-hover: #839496;
+  --template-bg-active: #333;
+  --template-border: var(--vscode-activityBar-background);
+
+  & #btn-create {
+    background-color: var(--vscode-activityBar-background);
+  }
+}
