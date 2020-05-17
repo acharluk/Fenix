@@ -1,7 +1,6 @@
 class FilterManager {
   constructor(filters) {
     this.templates = [];
-    this.filteredTemplates = [];
     this.filters = filters.map(filter => new Filter(filter.name, filter.property));
   }
 
@@ -10,10 +9,7 @@ class FilterManager {
   }
 
   getFilterNames() {
-    const names = [];
-    this.filters.forEach(f => names.push(f.name));
-
-    return names;
+    return this.filters.map(f => f.name);
   }
 
   getFilters() {
@@ -41,6 +37,12 @@ class FilterManager {
 
     return new Set(filtered);
   }
+
+  clearActive() {
+    this.filters.forEach(filter => {
+      filter.activeValues = [];
+    });
+  }
 }
 
 class Filter {
@@ -60,7 +62,6 @@ class Filter {
       for (let v of value) {
         if (!this.values.includes(v)) {
           this.values.push(v);
-          this.activeValues.push(v);
         }
       }
     }
@@ -96,6 +97,7 @@ class Filter {
         }
       }
     }
+
     return filteredTemplates;
   }
 }

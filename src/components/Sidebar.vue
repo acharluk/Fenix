@@ -48,15 +48,8 @@ export default {
     'filterManager'
   ]),
   methods: {
-    filterByLanguage(language) {
-      this.selectedLanguage = language;
-    },
-    filterByCategory(category) {
-      this.selectedCategory = category;
-    },
     removeFilters() { 
-      this.selectedLanguage = null;
-      this.selectedCategory = null;
+      this.filterManager.clearActive()
     }
   }
 };

@@ -88,7 +88,7 @@ export default new Vuex.Store({
         }
       }
 
-      return ret;
+      return ret.length > 0 ? ret : state.templates;
     }
   },
   modules: {
