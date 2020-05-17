@@ -1,10 +1,16 @@
 .web_colors {
   --body-bg: #002b36;
-  --body-fg: white;
+  --body-fg: #ffffff;
   
   --sidebar-bg: #073642;
+  --sidebar-fg: #ffffff;
+  --sidebar-bg-hover: #0f667e;
+  --sidebar-fg-hover: #ffffff;
   --sidebar-header-bg: #073642;
   --sidebar-element-bg: #073642;
+  --sidebar-separator: #094353;
+  --sidebar-active-bg: #0c5569;
+  --sidebar-active-fg: #ffffff;
 
   --template-bg: #586e75;
   --template-bg-hover: #839496;

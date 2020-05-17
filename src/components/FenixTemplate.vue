@@ -3,7 +3,6 @@
     :id="`template-${template.id}`"
     :class="{ active: isSelected(template.id), 'template': true }"
     @click="selectTemplate(template.id)"
-    :key="template.id"
   >
     <div
       class="template template-body"

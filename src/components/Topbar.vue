@@ -11,7 +11,7 @@
     </b-button>
 
     <b-input-group id="topbar__search">
-      <b-form-input v-model="searchTerm" placeholder="Search templates"></b-form-input>
+      <b-form-input class="search" v-model="searchTerm" placeholder="Search templates"></b-form-input>
     </b-input-group>
 
     <b-button variant="primary" :disabled="!selectedTemplate" id="topbar__btn-create" @click="runTemplate">
@@ -44,7 +44,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 #topbar {
     margin-bottom: 20px;
     display: flex;

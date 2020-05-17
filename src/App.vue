@@ -1,19 +1,17 @@
 <template>
   <div id="app">
     <div id="fenix" class="wrapper" :class="[ getColors() ]">
-      <div id="fenix-spinner" :class="{ spinnerVisible: loading }">
-        <b-spinner></b-spinner>
-      </div>
+      <Sidebar />
 
-      <!-- Sidebar  -->
-      <Sidebar :loading="loading" :languages="languages" :categories="categories" />
-
-      <!-- Page Content  -->
-      <div id="content" :class="{ filterVisible: loading }">
+      <div id="content">
         <Topbar />
 
         <section id="section-templates">
-          <Template v-for="template in filteredTemplates" :template="template" />
+          <FenixTemplate
+            v-for="template in filteredTemplates"
+            :key="template.id"
+            :template="template"
+          />
         </section>
       </div>
     </div>
@@ -21,15 +19,15 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import Template from "./components/Template";
+import { mapState, mapActions, mapGetters } from "vuex";
+import FenixTemplate from "./components/FenixTemplate";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 
 export default {
   name: "App",
   components: {
-    Template,
+    FenixTemplate,
     Sidebar,
     Topbar
   },
@@ -50,24 +48,6 @@ export default {
         this.$store.commit("setSearchTerm", value);
       }
     },
-    categories() {
-      let categories = new Set();
-      this.templates.forEach(t => {
-        categories.add(...t.categories);
-      });
-      return categories;
-    },
-    languages() {
-      let languages = new Set();
-      this.templates.forEach(t => {
-        if (typeof t.language === "string") {
-          languages.add(t.language);
-        } else {
-          languages.add(...t.language);
-        }
-      });
-      return languages;
-    },
     environment() {
       if (this.selectedTemplate) {
         return this.templates.find(t => t.id == this.selectedTemplate)
@@ -76,29 +56,7 @@ export default {
         return [];
       }
     },
-    filteredTemplates() {
-      const { selectedLanguage, selectedCategory, searchTerm } = this;
-      let temp;
-      if (!selectedLanguage && !selectedCategory) {
-        temp = this.templates;
-      } else {
-        temp = this.templates.filter(
-          t =>
-            t.categories.includes(selectedCategory) ||
-            t.language === selectedLanguage
-        );
-      }
-
-      if (searchTerm) {
-        temp = temp.filter(
-          t =>
-            t.id.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
-            t.displayName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-        );
-      }
-
-      return temp;
-    },
+    
     ...mapState([
       "templates",
       "repositories",
@@ -106,8 +64,9 @@ export default {
       "variables",
       "selectedLanguage",
       "loading",
-      "connector"
-    ])
+      "connector",
+    ]),
+    ...mapGetters(['filteredTemplates'])
   },
   created() {
     this.loadTemplates();
@@ -141,8 +100,8 @@ body {
   margin: 0;
 }
 
-body .btn {
-  /* TODO: Spinner is square! :( */
+body .btn,
+#topbar__search .search {
   border-radius: 0px !important;
 }
 
