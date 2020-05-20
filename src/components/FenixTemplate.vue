@@ -14,14 +14,16 @@
     >
       <img class="template__body-logo" :src="template.img" alt="">
       <div class="template__body-info">
-        <div class="template__body-info--center">
+        <div class="template__body-info-center">
           <!-- class="d-flex w-100 justify-content-between" -->
-          <h5 class="template__body-info-name">{{ template.displayName }}</h5>
-          <small class="template__body-info-reponame">{{ template.repoName }}</small>
+          <h5 class="template__body-info-center-name">{{ template.displayName }}</h5>
+          <!-- <br> -->
+          <p class="template__body-info-center-description">{{ template.description }}</p>
         </div>
-        <div class="template__body-info--right">
-          <p class="template__body-info-description">{{ template.description }}</p>
-          <small class="template__body-info-author">{{ template.author }}</small>
+        <div class="template__body-info-right">
+          <small class="template__body-info-right-author">{{ template.author }}</small>
+          <!-- <br> -->
+          <small class="template__body-info-right-reponame">{{ template.repoName }}</small>
         </div>
       </div>
     </div>
@@ -32,11 +34,11 @@
       class="template__form"
       :class="{ 'template__form--show': isSelected(template.id) }"
     >
-      <div class="form-group" v-for="variable in template.environment" :key="variable.id">
+      <div class="template__form-group" v-for="variable in template.environment" :key="variable.id">
         <label :for="variable.id">{{ variable.title }}</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control template__form-input"
           @input="variables[variable.id] = $event.target.value"
           :id="`form-control-${template.id}-${variable.id}`"
           :placeholder="variable.default || variable.title">
@@ -74,38 +76,74 @@ export default {
 
 <style lang="scss">
 .template {
+  // border: 1px solid yellow;
   cursor: pointer;
+  min-height: 120px;
   background-color: var(--template-bg);
   color: var(--template-fg);
   transition: all 0.2s ease-in-out;
 
+  // box-shadow: inset 0 0 10px 0px rgba(255, 255, 255, 0.404);
+
   &--active {
     cursor: default;
-    background-color: var(--template-bg-active);
-    color: var(--template-fg-active)
+    background-color: var(--template-bg-active) !important;
+    color: var(--template-fg-active);
+    height: auto;
+    // box-shadow: inset 0 -10px 50px 2px rgba(255, 255, 255, 0.384);
+  }
+
+  &:hover {
+    z-index: 99;
+    background: var(--template-bg-hover);
   }
 
   &__body {
+    min-height: 120px;
+
     &-logo {
-      height: 80px;
-      max-width: 20%;
       float: left;
+      height: 120px;
+      min-width: 120px;
+      max-width: 25%;
+      padding: 12px;
     }
 
-    &-name {
+    &-info {
+      display: flex;
+      align-items: center;
 
-    }
+      &-center {
+        flex-grow: 2;
+        text-align: center;
+        padding: 0 2rem;
 
-    &-reponame {
+        &-name {
+          color: var(--template-fg);
+          padding: .5rem 0;
+        }
 
-    }
+        &-description {
+          color: var(--template-fg);
+          padding: .5rem 0;
+        }
+      }
 
-    &-description {
+      &-right {
+        margin-right: 1rem;
+        text-align: center;
+        &-reponame {
+          color: var(--template-fg);
+          display: block;
+          padding: .5rem 0;
+        }
 
-    }
-
-    &-author {
-
+        &-author {
+          color: var(--template-fg);
+          display: block;
+          padding: .5rem 0;
+        }
+      }      
     }
   }
 
@@ -114,7 +152,16 @@ export default {
     display: none;
 
     &--show {
+      visibility: visible;
+      display: block;
+    }
 
+    &-group {
+      padding: 1rem;
+    }
+
+    &-input {
+      border-radius: 0 !important;
     }
   }
 }

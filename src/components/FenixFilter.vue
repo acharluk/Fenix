@@ -64,6 +64,10 @@ export default {
       outline: 0;
     }
 
+    &:active {
+      background: var(--sidebar-focus-bg) !important;
+    }
+
     &:hover {
       background-color: var(--sidebar-bg-hover);
       color: var(--sidebar-fg-hover);
@@ -80,12 +84,15 @@ export default {
   .filter-list {
     list-style: none;
     background-color: inherit;
+    color: inherit;
     opacity: 0;
     height: 0;
+    display: none;
     padding: 0;
 
     &.show {
-      opacity: 100%;
+      display: block;
+      opacity: 1;
       height: auto;
     }
 
@@ -95,7 +102,12 @@ export default {
       cursor: pointer;
       background-color: inherit;
 
+      &:active {
+        background: var(--sidebar-click-bg) !important;
+      }
+
       .filter-item-text {
+        color: var(--sidebar-fg);
         padding-left: 1.5rem;
       }
 
@@ -111,6 +123,4 @@ export default {
     }
   }
 }
-
-
 </style>

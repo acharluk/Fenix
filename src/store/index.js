@@ -88,7 +88,18 @@ export default new Vuex.Store({
         }
       }
 
-      return ret.length > 0 ? ret : state.templates;
+      ret = ret.length > 0
+            ? ret.sort((a, b) => a.displayName < b.displayName ? -1 : 1)
+            : state.templates.sort((a, b) => a.displayName < b.displayName ? -1 : 1);
+
+      if (state.searchTerm !== '') {
+        ret = ret.filter((tmpl) => (
+          tmpl.displayName.toLowerCase().includes(state.searchTerm.toLowerCase())
+          || tmpl.description.toLowerCase().includes(state.searchTerm.toLowerCase())
+        ));
+      }
+
+      return ret;
     }
   },
   modules: {

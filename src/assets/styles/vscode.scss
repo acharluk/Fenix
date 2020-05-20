@@ -8,16 +8,15 @@
   --sidebar-fg-hover: var(--vscode-editor-foreground);
   --sidebar-header-bg: var(--vscode-activityBar-background);
   --sidebar-element-bg: var(--vscode-activityBar-background);
-  --sidebar-separator: #094353;
+  --sidebar-separator: var(--vscode-activityBar-dropBackground);
+  --sidebar-click-bg: var(--vscode-button-background);
   --sidebar-active-bg: #0c5569;
   --sidebar-active-fg: var(--vscode-editor-foreground);
   
   --template-bg: var(--vscode-activityBar-background);
-  --template-bg-hover: #839496;
-  --template-bg-active: #333;
+  --template-fg: var(--vscode-editor-foreground);
+  --template-bg-hover: var(--vscode-activityBar-dropBackground);
+  --template-bg-active: var(--vscode-activityBar-background);
+  --template-fg-active: var(--vscode-activityBar-foreground);
   --template-border: var(--vscode-activityBar-background);
-
-  & #btn-create {
-    background-color: gray; //var(--vscode-activityBar-background);
-  }
 }

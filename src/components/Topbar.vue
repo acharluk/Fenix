@@ -1,13 +1,15 @@
 <template>
   <div id="topbar">
-    <b-button variant="warning" id="topbar__btn-settings">
+    <!-- <b-button variant="warning" id="topbar__btn-settings">
       <font-awesome-icon :icon="['fas', 'cogs']"></font-awesome-icon>
       <span id="btn-create-text">Settings</span>
-    </b-button>
+    </b-button> -->
 
     <b-button variant="success" id="btn-more-templates">
-      <font-awesome-icon :icon="['fas', 'plus-circle']"></font-awesome-icon>
-      <span id="btn-create-text">More templates</span>
+      <a href="https://github.com/acharluk/FenixDefaultTemplates" target="_blank">
+        <font-awesome-icon :icon="['fas', 'plus-circle']"></font-awesome-icon>
+        <span id="btn-create-text">&nbsp;More templates</span>
+      </a>
     </b-button>
 
     <b-input-group id="topbar__search">
@@ -16,7 +18,7 @@
 
     <b-button variant="primary" :disabled="!selectedTemplate" id="topbar__btn-create" @click="runTemplate">
       <font-awesome-icon :icon="['fas', 'rocket']"></font-awesome-icon>
-      <span id="btn-create-text">Create</span>
+      <span id="btn-create-text">&nbsp;Create</span>
     </b-button>
   </div>
 </template>
@@ -66,6 +68,11 @@ export default {
 
 #topbar__btn-create.disabled {
     cursor: not-allowed;
-    opacity: 40%;
+    opacity: 0.3;
+}
+
+#btn-more-templates a {
+  color: var(--body-fg);
+  text-decoration: none;
 }
 </style>

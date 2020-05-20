@@ -49,7 +49,8 @@ export default {
   ]),
   methods: {
     removeFilters() { 
-      this.filterManager.clearActive()
+      this.filterManager.clearActive();
+      this.$store.commit('setSearchTerm', '');
     }
   }
 };
