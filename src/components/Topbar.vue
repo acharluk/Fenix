@@ -1,12 +1,7 @@
 <template>
   <div id="topbar">
-    <!-- <b-button variant="warning" id="topbar__btn-settings">
-      <font-awesome-icon :icon="['fas', 'cogs']"></font-awesome-icon>
-      <span id="btn-create-text">Settings</span>
-    </b-button> -->
-
     <b-button variant="success" id="btn-more-templates">
-      <a href="https://github.com/acharluk/FenixDefaultTemplates" target="_blank">
+      <a href="https://github.com/FenixTemplates" target="_blank">
         <font-awesome-icon :icon="['fas', 'plus-circle']"></font-awesome-icon>
         <span id="btn-create-text">&nbsp;More templates</span>
       </a>
@@ -16,7 +11,12 @@
       <b-form-input class="search" v-model="searchTerm" placeholder="Search templates"></b-form-input>
     </b-input-group>
 
-    <b-button variant="primary" :disabled="!selectedTemplate" id="topbar__btn-create" @click="runTemplate">
+    <b-button
+      variant="primary"
+      :disabled="!selectedTemplate"
+      id="topbar__btn-create"
+      @click="runTemplate"
+    >
       <font-awesome-icon :icon="['fas', 'rocket']"></font-awesome-icon>
       <span id="btn-create-text">&nbsp;Create</span>
     </b-button>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 export default {
   computed: {
     searchTerm: {
@@ -32,47 +32,46 @@ export default {
         return this.$store.state.searchTerm;
       },
       set(value) {
-        this.$store.commit('setSearchTerm', value);
+        this.$store.commit("setSearchTerm", value);
       }
     },
-    ...mapState(['selectedTemplate', 'connector', 'variables'])
+    ...mapState(["selectedTemplate", "connector", "variables"])
   },
   methods: {
     runTemplate() {
       this.connector.runTemplate(this.selectedTemplate, this.variables);
-    },
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
 #topbar {
-    margin-bottom: 20px;
-    display: flex;
-}
+  margin-bottom: 20px;
+  display: flex;
 
-#topbar>* {
+  & > * {
     margin: 0 5px;
-}
+  }
 
-#topbar__search {
+  &__search {
     flex-grow: 4;
     flex-shrink: 3;
     flex-basis: 20%;
     align-self: center;
-}
+  }
 
-#topbar__btn-create {
+  &__btn-create {
     transition: opacity 150ms ease-in-out;
-}
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+  }
 
-#topbar__btn-create.disabled {
-    cursor: not-allowed;
-    opacity: 0.3;
-}
-
-#btn-more-templates a {
-  color: var(--body-fg);
-  text-decoration: none;
+  & #btn-more-templates a {
+    color: var(--body-fg);
+    text-decoration: none;
+  }
 }
 </style>

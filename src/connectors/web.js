@@ -11,7 +11,7 @@ class WebConnector {
   }
 
   loadTemplates(callback) {
-    fetch('https://raw.githubusercontent.com/acharluk/FenixDefaultTemplates/master/fenix.json')
+    fetch('https://raw.githubusercontent.com/FenixTemplates/Default/master/fenix.json')
     .then(res => res.json())
     .then(json => {  
         const templateData = {
@@ -21,7 +21,7 @@ class WebConnector {
             repoName: json.repoName
           })),
           repositories: [
-            'https://raw.githubusercontent.com/acharluk/FenixDefaultTemplates/master/fenix.json'
+            'https://raw.githubusercontent.com/FenixTemplates/Default/master/fenix.json'
           ],
         };
 

@@ -2,20 +2,20 @@
   --body-bg: var(--vscode-editor-background);
   --body-fg: var(--vscode-editor-foreground);
 
-  --sidebar-bg: var(--vscode-activityBar-background);
+  --sidebar-bg: var(--vscode-activityBar-dropBackground);
   --sidebar-fg: var(--vscode-editor-foreground);
-  --sidebar-bg-hover: #0f667e;
+  --sidebar-bg-hover: var(--vscode-editor-selectionBackground);
   --sidebar-fg-hover: var(--vscode-editor-foreground);
   --sidebar-header-bg: var(--vscode-activityBar-background);
   --sidebar-element-bg: var(--vscode-activityBar-background);
   --sidebar-separator: var(--vscode-activityBar-dropBackground);
   --sidebar-click-bg: var(--vscode-button-background);
-  --sidebar-active-bg: #0c5569;
+  --sidebar-active-bg: var(--vscode-editor-wordHighlightStrongBackground);
   --sidebar-active-fg: var(--vscode-editor-foreground);
   
-  --template-bg: var(--vscode-activityBar-background);
+  --template-bg: var(--vscode-activityBar-dropBackground);
   --template-fg: var(--vscode-editor-foreground);
-  --template-bg-hover: var(--vscode-activityBar-dropBackground);
+  --template-bg-hover: var(--vscode-activityBar-background);
   --template-bg-active: var(--vscode-activityBar-background);
   --template-fg-active: var(--vscode-activityBar-foreground);
   --template-border: var(--vscode-activityBar-background);

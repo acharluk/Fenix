@@ -45,14 +45,10 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-  // background-color: var(--sidebar-bg);
-  // color: var(--sidebar-fg);
-  // width: 100%;
-
   &__btn {
     position: relative;
     background-color: inherit;
-    color: inherit;
+    color: var(--sidebar-fg);
     width: 100%;
     border: 0;
     padding: 10px;
@@ -89,6 +85,8 @@ export default {
     height: 0;
     display: none;
     padding: 0;
+    overflow: auto;
+    max-height: 20%;
 
     &.show {
       display: block;
