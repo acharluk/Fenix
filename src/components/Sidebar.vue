@@ -65,8 +65,13 @@ export default {
   color: var(--sidebar-fg);
   transition: all 0.3s;
   position: relative;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 
   &__header {
+    display: block;
     padding: 20px;
 
     &-logo {
@@ -76,6 +81,7 @@ export default {
 
     &-branding {
       margin-top: .75rem;
+      margin-left: 4.5rem;
 
       &--small {
         font-size: small;
@@ -86,8 +92,8 @@ export default {
   &__filter_list {
     list-style-type: none;
     padding: 0;
-    height: 70%;
     overflow: auto;
+    flex-grow: 1;
 
     &-filter {
       &--active {
@@ -101,15 +107,6 @@ export default {
     list-style-type: none;
     padding: 0;
     text-align: center;
-    position: absolute;
-    bottom: .5rem;
-    width: 100%;
-
-    &-button {
-      top: 50%;
-      transform: translateY(-50%);
-      margin-top: 1.5rem;
-    }
 
     &::before {
       content: '';
@@ -117,7 +114,7 @@ export default {
       height: 5px;
       background-color: var(--sidebar-separator);
       width: 100%;
-      transform: translateY(-1.5rem);
+      transform: translateY(-1rem);
     }
   }
 }
