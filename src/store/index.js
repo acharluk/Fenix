@@ -50,12 +50,21 @@ export default new Vuex.Store({
     },
     setFilterState(state, value) {
       state.filterManager.toggleValueState(value.property, value.value);
+    },
+    clearFilters(state) {
+      state.filterManager = new FilterManager([
+        { name: 'Language', property: 'language' },
+        { name: 'Category', property: 'category'},
+        { name: 'Author', property: 'author'},
+        { name: 'Repository', property: 'repoName'},
+      ]);
     }
   },
   actions: {
     loadTemplates(context) {
       context.state.connector.loadTemplates((templateData) => {
         context.commit('setTemplates', templateData.templates);
+        context.commit('clearFilters');
         templateData.templates.forEach((t) => {
           context.commit('addValueToFilter', { id: 'author', value: t.author });
           context.commit('addValueToFilter', { id: 'category', value: t.category });
