@@ -43,6 +43,13 @@ class FilterManager {
       filter.activeValues = [];
     });
   }
+
+  clearValues() {
+    this.filters.forEach(filter => {
+      filter.values = [];
+      filter.activeValues = [];
+    })
+  }
 }
 
 class Filter {

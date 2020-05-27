@@ -20,7 +20,6 @@ export default new Vuex.Store({
     ]),
     selectedTemplate: null,
     searchTerm: '',
-    loading: true,
     connector: typeof acquireVsCodeApi !== 'undefined'
       ? new VSCodeConnector
       : new WebConnector,
@@ -52,12 +51,7 @@ export default new Vuex.Store({
       state.filterManager.toggleValueState(value.property, value.value);
     },
     clearFilters(state) {
-      state.filterManager = new FilterManager([
-        { name: 'Language', property: 'language' },
-        { name: 'Category', property: 'category'},
-        { name: 'Author', property: 'author'},
-        { name: 'Repository', property: 'repoName'},
-      ]);
+      state.filterManager.clearValues();
     }
   },
   actions: {
@@ -72,7 +66,6 @@ export default new Vuex.Store({
           context.commit('addValueToFilter', { id: 'repoName', value: t.repoName });
         });
         context.commit('setRepositories', templateData.repositories);
-        context.commit('setLoading', false);
       });
 
       context.state.connector.postMessage({
