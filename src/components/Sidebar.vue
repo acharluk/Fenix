@@ -2,7 +2,7 @@
   <nav class="sidebar">
     <div class="sidebar__header">
       <img
-        src="http://fenix.acharluk.xyz/logo.png"
+        src="logo.png"
         alt="Fenix Logo"
         class="sidebar__header-logo"
       />
