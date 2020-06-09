@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import WebConnector from '../connectors/web';
+import DummyConnector from '../connectors/dummy';
 import VSCodeConnector from '../connectors/vscode';
 import { FilterManager } from '../FilterManager';
 
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     searchTerm: '',
     connector: typeof acquireVsCodeApi !== 'undefined'
       ? new VSCodeConnector
-      : new WebConnector,
+      : new DummyConnector,
   },
   mutations: {
     setTemplates(state, value) {

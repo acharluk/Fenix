@@ -40,7 +40,6 @@ import { mapState } from 'vuex';
 import FenixFilter from '@/components/FenixFilter.vue';
 
 export default {
-  props: ["loading", "languages", "categories"],
   components: {
     FenixFilter,
   },

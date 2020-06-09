@@ -1,7 +1,7 @@
 class WebConnector {
 
   getName() {
-    return 'web';
+    return 'dummy';
   }
 
   runTemplate(id, vars) {
@@ -29,9 +29,7 @@ class WebConnector {
       });
   }
 
-  postMessage() {
-    
-  }
+  postMessage() { }
 }
 
 export default WebConnector;

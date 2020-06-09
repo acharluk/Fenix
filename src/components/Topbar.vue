@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
+
 export default {
   computed: {
     searchTerm: {
@@ -32,10 +33,10 @@ export default {
         return this.$store.state.searchTerm;
       },
       set(value) {
-        this.$store.commit("setSearchTerm", value);
+        this.$store.commit('setSearchTerm', value);
       }
     },
-    ...mapState(["selectedTemplate", "connector", "variables"])
+    ...mapState(['selectedTemplate', 'connector', 'variables'])
   },
   methods: {
     runTemplate() {

@@ -33,7 +33,6 @@ class VSCodeConnector {
           break;
       }
     });
-
   }
 
   postMessage(obj) {

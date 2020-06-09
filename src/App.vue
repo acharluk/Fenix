@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
-import FenixTemplate from "./components/FenixTemplate";
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
+import { mapState, mapActions, mapGetters } from 'vuex';
+import FenixTemplate from './components/FenixTemplate';
+import Sidebar from './components/Sidebar';
+import Topbar from './components/Topbar';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     FenixTemplate,
     Sidebar,
@@ -37,7 +37,7 @@ export default {
         return this.$store.state.selectedTemplate;
       },
       set(value) {
-        this.$store.commit("setSelectedTemplate", value);
+        this.$store.commit('setSelectedTemplate', value);
       }
     },
     searchTerm: {
@@ -45,7 +45,7 @@ export default {
         return this.$store.state.searchTerm;
       },
       set(value) {
-        this.$store.commit("setSearchTerm", value);
+        this.$store.commit('setSearchTerm', value);
       }
     },
     environment() {
@@ -58,13 +58,13 @@ export default {
     },
     
     ...mapState([
-      "templates",
-      "repositories",
-      "repoFields",
-      "variables",
-      "selectedLanguage",
-      "loading",
-      "connector",
+      'templates',
+      'repositories',
+      'repoFields',
+      'variables',
+      'selectedLanguage',
+      'loading',
+      'connector',
     ]),
     ...mapGetters(['filteredTemplates'])
   },
@@ -73,11 +73,11 @@ export default {
   },
   methods: {
     getColors() {
-      return typeof acquireVsCodeApi !== "undefined"
-        ? "vscode_colors"
-        : "web_colors";
+      return typeof acquireVsCodeApi !== 'undefined'
+        ? 'vscode_colors'
+        : 'web_colors';
     },
-    ...mapActions(["loadTemplates", "selectTemplate"])
+    ...mapActions(['loadTemplates', 'selectTemplate'])
   }
 };
 </script>

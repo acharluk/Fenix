@@ -3,6 +3,7 @@
     :id="`template-${template.id}`"
     :class="[ 'template', { 'template--active': isSelected(template.id) }]"
     @click="selectTemplate(template.id)"
+    @dblclick="runTemplate"
   >
     <div
       class="template__body"
@@ -60,11 +61,14 @@ export default {
         this.$store.commit('setVariables', value);
       }
     },
-    ...mapState(['selectedTemplate'])
+    ...mapState(['selectedTemplate', 'connector'])
   },
   methods: {
     isSelected(id) {
       return this.selectedTemplate === id;
+    },
+    runTemplate() {
+      this.connector.runTemplate(this.selectedTemplate, this.variables);
     },
     ...mapActions(['selectTemplate'])
   }
@@ -103,6 +107,7 @@ export default {
     }
 
     &-info {
+      user-select: none;
       display: flex;
       align-items: center;
 
