@@ -1,4 +1,4 @@
-class WebConnector {
+class DummyConnector {
 
   getName() {
     return 'dummy';
@@ -32,4 +32,4 @@ class WebConnector {
   postMessage() { }
 }
 
-export default WebConnector;
+export default DummyConnector;

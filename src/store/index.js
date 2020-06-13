@@ -32,9 +32,6 @@ export default new Vuex.Store({
     setRepositories(state, value) {
       state.repositories = value;
     },
-    setLoading(state, value) {
-      state.loading = value;
-    },
     setSelectedTemplate(state, value) {
       state.selectedTemplate = value;
     },
